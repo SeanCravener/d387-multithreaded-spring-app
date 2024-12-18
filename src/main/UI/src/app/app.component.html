@@ -59,9 +59,16 @@
     <article class="content">
       <br />
       <div class="row">
-        <h1>Welcome Messages</h1>
+        <h2>Messages:</h2>
         <div>
-          <h2>{{ message$ | async }}</h2>
+          <p>{{ message$ | async }}</p>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <h2>Live Presention Time:</h2>
+        <div>
+          <p>{{ meetingTimes$ | async }}</p>
         </div>
       </div>
       <br />

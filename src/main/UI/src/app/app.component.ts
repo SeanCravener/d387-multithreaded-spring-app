@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   message$!: Observable<string>;
+  meetingTimes$!: Observable<string>;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -27,6 +28,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.message$ = this.httpClient.get(this.baseURL + '/welcome', {
+      responseType: 'text',
+    });
+    this.meetingTimes$ = this.httpClient.get(this.baseURL + '/presentation', {
       responseType: 'text',
     });
     this.roomsearch = new FormGroup({
