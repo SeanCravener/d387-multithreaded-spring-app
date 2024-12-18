@@ -34,8 +34,6 @@ export class AppComponent implements OnInit {
       checkout: new FormControl(' '),
     });
 
-    //     this.rooms=ROOMS;
-
     const roomsearchValueChanges$ = this.roomsearch.valueChanges;
 
     // subscribe to the stream
@@ -49,6 +47,10 @@ export class AppComponent implements OnInit {
     this.getAll().subscribe((rooms) => {
       console.log(Object.values(rooms)[0]);
       this.rooms = <Room[]>Object.values(rooms)[0];
+      this.rooms.forEach((room) => {
+        room.priceCAD = (Number(room.price) * 1.26).toFixed(0);
+        room.priceEUR = (Number(room.price) * 0.631).toFixed(0);
+      });
     });
   }
   reserveRoom(value: string) {
@@ -100,6 +102,8 @@ export interface Room {
   roomNumber: string;
   price: string;
   links: string;
+  priceCAD: string;
+  priceEUR: string;
 }
 export class ReserveRoomRequest {
   roomId: string;
